@@ -30,7 +30,12 @@ router.get('/', function(req, res) {
     res.json({ result: 'Hello world! This is the API for the IoT Workshop.' });
 });
 
-//router.route('/status')//TODO
+router.route('/status')
+    // get status of API (accessed at GET http://localhost:8080/api/status)
+    .get(function(req, res) {
+        console.log('GET /status');
+        res.json({ status: 'Alive' });
+    })
 
 router.route('/messages')
     // get all messages (accessed at GET http://localhost:8080/api/messages)
@@ -39,7 +44,7 @@ router.route('/messages')
         Message.find(function(err, messages) {
             if (err)
               res.send(err);
-            console.log('\tReturned all saved messages.');
+            console.log('\tReturned all saved messages');
             res.json(messages);
         });
     })
@@ -55,8 +60,8 @@ router.route('/messages')
         message.save(function(err) {
             if (err)
               res.send(err);
-            res.json({ result: 'Message saved.' });
-            console.log('\tMessage saved.');
+            res.json({ result: 'Message saved' });
+            console.log('\tMessage saved');
         });
     });
 
