@@ -9,7 +9,7 @@ var app        = express();                 // define our app using express
 
 // connect to our database
 mongoose.connect('mongodb://localhost/apiDatabase');
-var message = require('./models/message');
+var Message = require('./models/message');
 
 // configure app to use bodyParser(), this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,17 +20,45 @@ app.use(bodyParser.json());
 // =============================================================================
 var router = express.Router();              // get an instance of express Router
 
-// middleware to use for all requests
+// middleware (useful for logging and validations)
 router.use(function(req, res, next) {
-    console.log('API was called.');
-    next(); // make sure we go to the next routes and don't stop here
+    next(); // continue to the routes
 });
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'Hello world! This is the API for the IoT Workshop.' });
+    res.json({ result: 'Hello world! This is the API for the IoT Workshop.' });
 });
 
+//router.route('/status')//TODO
+
+router.route('/messages')
+    // get all messages (accessed at GET http://localhost:8080/api/messages)
+    .get(function(req, res) {
+        console.log('GET /messages');
+        Message.find(function(err, messages) {
+            if (err)
+              res.send(err);
+            console.log('\tReturned all saved messages.');
+            res.json(messages);
+        });
+    })
+    // create a message (accessed at POST http://localhost:8080/api/messages)
+    .post(function(req, res) {
+        console.log('POST /messages');
+        var message = new Message();
+        message.text = req.body.text;
+        message.author = req.body.author;
+        message.timestamp = new Date();
+
+        // save the bear and check for errors
+        message.save(function(err) {
+            if (err)
+              res.send(err);
+            res.json({ result: 'Message saved.' });
+            console.log('\tMessage saved.');
+        });
+    });
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);                    // all routes are prefixed with this
