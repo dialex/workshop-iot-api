@@ -28,5 +28,14 @@
 
 ## TODO
 
+API:
+
+- GET /status
+- GET /log
+- GET /log/{number}
+- POST /log
+
+Reference material
+
 - how to create an API using node.js https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 - TDD https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
