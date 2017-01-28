@@ -37,6 +37,8 @@ router.route('/status')
         res.json({ status: 'Alive' });
     })
 
+// on routes that end in /messages
+// ----------------------------------------------------
 router.route('/messages')
     // get all messages (accessed at GET http://localhost:8080/api/messages)
     .get(function(req, res) {
@@ -61,8 +63,19 @@ router.route('/messages')
             res.json({ result: 'Message saved' });
             console.log('\tMessage saved');
         });
+    })
+    .delete(function(req, res) {
+        console.log('DELETE /messages');
+        Message.remove({}, function(err, bear) {
+            if (err)
+              res.send(err);
+            res.json({ message: 'Messages deleted' });
+            console.log('\tMessages deleted');
+        });
     });
 
+// on routes that end in /messages/...
+// ----------------------------------------------------
 router.route('/messages/:author_name')
     // get the message with that id (accessed at GET http://localhost:8080/api/messages/:author_name)
     .get(function(req, res) {
@@ -71,7 +84,7 @@ router.route('/messages/:author_name')
             if (err)
               res.send(err);
             res.json(message);
-            console.log('\tReturned all messages of: ' + req.params.author_name);
+            console.log('\tReturned messages of: ' + req.params.author_name);
         });
     });
 
