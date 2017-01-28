@@ -54,14 +54,24 @@ router.route('/messages')
         var message = new Message();
         message.text = req.body.text;
         message.author = req.body.author;
-        message.timestamp = new Date();
 
-        // save the bear and check for errors
         message.save(function(err) {
             if (err)
               res.send(err);
             res.json({ result: 'Message saved' });
             console.log('\tMessage saved');
+        });
+    });
+
+router.route('/messages/:author_name')
+    // get the message with that id (accessed at GET http://localhost:8080/api/messages/:author_name)
+    .get(function(req, res) {
+      console.log('GET /messages/{author_name}');
+        Message.find({ author: req.params.author_name }, function(err, message) {
+            if (err)
+              res.send(err);
+            res.json(message);
+            console.log('\tReturned all messages of: ' + req.params.author_name);
         });
     });
 
