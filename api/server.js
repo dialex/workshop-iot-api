@@ -8,7 +8,6 @@ var config     = require('config');         // we load configs from JSON files
 var express    = require('express');
 var mongoose   = require('mongoose');
 var morgan     = require('morgan');
-var secrets    = require('./config/secrets');
 var app        = express();                 // define our app using express
 let port       = process.env.PORT || 8080;
 
@@ -21,9 +20,6 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
 //parse application/json and look for raw text
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
-console.log(secrets.tokenSalt)
-app.set('superSecret', secrets.tokenSalt);
 
 // ============================================================================
 // DATABASE SETUP
