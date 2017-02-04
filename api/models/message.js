@@ -2,9 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var MessageSchema = new Schema({
-    timestamp: {type: Date, default: Date.now},
-    author: String,
-    text: String
+  timestamp: {
+    type: Date,
+    default: Date.now
+  },
+  author: String,
+  text: String
 });
 
 MessageSchema.methods.toJSON = function() {

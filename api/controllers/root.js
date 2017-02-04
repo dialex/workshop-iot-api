@@ -3,7 +3,9 @@
  */
 function get(req, res) {
   console.log('GET /');
-  res.json({ result: 'Hello world! This is the API for the IoT Workshop.' });
+  res.json({
+    result: 'Hello world! This is the API for the IoT Workshop.'
+  });
 }
 
 //export all the functions
