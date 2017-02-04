@@ -48,15 +48,19 @@ router.use(function(req, res, next) {
 });
 
 // declare routes
+let root = require('./controllers/root');
+let auth = require('./controllers/auth');
 let status = require('./controllers/status');
 let message = require('./controllers/message');
-let root = require('./controllers/root');
 
 router.route('/')
     .get(root.get)
 
 router.route('/status')
     .get(status.getStatus);
+
+router.route('/auth')
+    .post(auth.authenticate);
 
 router.route('/message')
     .get(message.getMessages)

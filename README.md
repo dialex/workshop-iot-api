@@ -52,6 +52,7 @@
   - https://community.particle.io/t/https-client-is-here-for-the-photon-by-the-glowfi-sh-team/15934
 - How to display realtime logging on screen?
   - 10 seconds polling, calling the same API logging endpoint
-- how to create an API using node.js https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
-- TDD https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
-- https auth https://scotch.io/tutorials/setting-up-a-mean-stack-single-page-application
+- Create an API using node.js
+  - [barebones](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4)
+  - [TDD](https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai)
+  - [auth token intro](https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication)
