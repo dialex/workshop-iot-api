@@ -34,24 +34,24 @@
 
 ## TODO
 
-[ ] Unit testing
-[ ] endpoints that returns "usage" routes
-[ ] require auth token (user: testbash, pass: brighton)
-[ ] cleanup & organise into modules
+- [ ] Unit testing
+- [ ] endpoints that returns "usage" routes
+- [ ] require auth token (user: testbash, pass: brighton)
+- [ ] cleanup & organise into modules
 
 --------
 
-[ ] html page that lists messages
-[ ] auto refresh that page every 3 sec
-[ ] load/perf testing on that page (API)
+- [ ] html page that lists messages
+- [ ] auto refresh that page every 3 sec
+- [ ] load/perf testing on that page (API)
 
 --------
 
-[ ] backup YumYumButton
-[ ] connect device to API
-[ ] test call
-[ ] snapshot/tag (save configs)
-[ ] diff buttons with diff calls
+- [ ] backup YumYumButton
+- [ ] connect device to API
+- [ ] test call
+- [ ] snapshot/tag (save configs)
+- [ ] diff buttons with diff calls
 
 Reference material
 
