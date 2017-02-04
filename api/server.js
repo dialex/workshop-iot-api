@@ -1,99 +1,80 @@
+// ============================================================================
 // BASE SETUP
-// =============================================================================
+// ============================================================================
 
 // call the packages we need
-var express    = require('express');
 var bodyParser = require('body-parser');
+var config     = require('config');         //we load configs from JSON files
+var express    = require('express');
 var mongoose   = require('mongoose');
+var morgan     = require('morgan');
 var app        = express();                 // define our app using express
+let port = 8080;
 
-// connect to our database
-mongoose.connect('mongodb://localhost/apiDatabase');
-var Message = require('./models/message');
+//don't show the log when it is test
+if(config.util.getEnv('NODE_ENV') === 'dev') {
+    //app.use(morgan('combined')); //uncomment for verbose console logging
+}
 
-// configure app to use bodyParser(), this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
+//parse application/json and look for raw text
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/json'}));
 
+// ============================================================================
+// DATABASE SETUP
+// ============================================================================
 
-// ROUTES FOR OUR API
-// =============================================================================
-var router = express.Router();              // get an instance of express Router
+let options =
+{
+    server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
+};
+
+// connect
+mongoose.connect(config.DBHost, options);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+// ============================================================================
+// ROUTES SETUP
+// ============================================================================
+let router = express.Router();
 
 // middleware (useful for logging and validations)
 router.use(function(req, res, next) {
     next(); // continue to the routes
 });
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-    res.json({ result: 'Hello world! This is the API for the IoT Workshop.' });
-});
+// declare routes
+let status = require('./controllers/status');
+let message = require('./controllers/message');
+let root = require('./controllers/root');
+
+router.route('/')
+    .get(root.get)
 
 router.route('/status')
-    // get status of API (accessed at GET http://localhost:8080/api/status)
-    .get(function(req, res) {
-        console.log('GET /status');
-        res.json({ status: 'Alive' });
-    })
+    .get(status.getStatus);
 
-// on routes that end in /messages
-// ----------------------------------------------------
-router.route('/messages')
-    // get all messages (accessed at GET http://localhost:8080/api/messages)
-    .get(function(req, res) {
-        console.log('GET /messages');
-        Message.find(function(err, messages) {
-            if (err)
-              res.send(err);
-            console.log('\tReturned all saved messages');
-            res.json(messages);
-        });
-    })
-    // create a message (accessed at POST http://localhost:8080/api/messages)
-    .post(function(req, res) {
-        console.log('POST /messages');
-        var message = new Message();
-        message.text = req.body.text;
-        message.author = req.body.author;
+router.route('/message')
+    .get(message.getMessages)
+    .post(message.postMessage)
+    .delete(message.deleteMessages);
 
-        message.save(function(err) {
-            if (err)
-              res.send(err);
-            res.json({ result: 'Message saved' });
-            console.log('\tMessage saved');
-        });
-    })
-    .delete(function(req, res) {
-        console.log('DELETE /messages');
-        Message.remove({}, function(err, bear) {
-            if (err)
-              res.send(err);
-            res.json({ message: 'Messages deleted' });
-            console.log('\tMessages deleted');
-        });
-    });
+router.route('/message/:author_name')
+    .get(message.getMessagesByAuthor)
 
-// on routes that end in /messages/...
-// ----------------------------------------------------
-router.route('/messages/:author_name')
-    // get the message with that id (accessed at GET http://localhost:8080/api/messages/:author_name)
-    .get(function(req, res) {
-      console.log('GET /messages/{author_name}');
-        Message.find({ author: req.params.author_name }, function(err, message) {
-            if (err)
-              res.send(err);
-            res.json(message);
-            console.log('\tReturned messages of: ' + req.params.author_name);
-        });
-    });
+// register routes, and prefix all them
+app.use('/api', router);
 
-// REGISTER OUR ROUTES -------------------------------
-app.use('/api', router);                    // all routes are prefixed with this
-
-
+// ============================================================================
 // START THE SERVER
-// =============================================================================
-var port = process.env.PORT || 8080;        // set our port
+// ============================================================================
+port = process.env.PORT || port;
 app.listen(port);
 console.log('🌈  Magic happens on port ' + port);
+
+// expose app for testing purposes
+module.exports = app;
