@@ -13,7 +13,7 @@ var app        = express();                 // define our app using express
 let port       = process.env.PORT || 8080;
 
 //don't show the log when it is test
-if(config.util.getEnv('NODE_ENV') === 'dev') {
+if(config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(morgan('dev'));
     //app.use(morgan('combined')); //uncomment for verbose console logging
 }

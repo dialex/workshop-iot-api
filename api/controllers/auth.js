@@ -2,7 +2,6 @@
  * POST /auth, validates credentials of user
  */
 function authenticate(req, res) {
-  console.log('POST /auth');
   var user = req.body.username;
   var pass = req.body.password;
   if ((user === 'testbash') && (pass === 'brighton17')) {

@@ -2,7 +2,6 @@
  * GET /status, returns status of API
  */
 function getStatus(req, res) {
-  console.log('GET /status');
   res.json({ status: 'Alive' });
 }
 
