@@ -1,5 +1,5 @@
 let mongoose = require('mongoose');
-let Message = require('../../models/message');
+let Message = require('../models/message');
 
 /*
  * GET /message, returns all messages

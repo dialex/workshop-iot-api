@@ -1,5 +1,6 @@
+// ============================================================================
 // BASE SETUP
-// =============================================================================
+// ============================================================================
 
 // call the packages we need
 var bodyParser = require('body-parser');
@@ -8,11 +9,6 @@ var express    = require('express');
 var mongoose   = require('mongoose');
 var morgan     = require('morgan');
 var app        = express();                 // define our app using express
-
-// declare routes
-let status = require('./controllers/routes/status');
-let message = require('./controllers/routes/message');
-let root = require('./controllers/routes/root');
 let port = 8080;
 
 //db options
@@ -38,15 +34,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
 
-
+// ============================================================================
 // ROUTES FOR OUR API
-// =============================================================================
-var router = express.Router();
+// ============================================================================
+let router = express.Router();
 
 // middleware (useful for logging and validations)
 router.use(function(req, res, next) {
     next(); // continue to the routes
 });
+
+// declare routes
+let status = require('./controllers/status');
+let message = require('./controllers/message');
+let root = require('./controllers/root');
 
 router.route('/')
     .get(root.get)
@@ -65,10 +66,10 @@ router.route('/message/:author_name')
 // register routes, and prefix all them
 app.use('/api', router);
 
-
+// ============================================================================
 // START THE SERVER
-// =============================================================================
-port = process.env.PORT || port;            // set our port
+// ============================================================================
+port = process.env.PORT || port;
 app.listen(port);
 console.log('🌈  Magic happens on port ' + port);
 
