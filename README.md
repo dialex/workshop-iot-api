@@ -20,7 +20,7 @@
 
 - `npm install` installs dependencies
 - `mongod` starts the database
-- `node server.js` starts the API
+- `npm start` starts the API
 
 ## TODO
 
