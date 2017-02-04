@@ -9,6 +9,8 @@ var mongoose   = require('mongoose');
 var morgan     = require('morgan');
 var app        = express();                 // define our app using express
 
+// declare routes
+let status = require('./controllers/routes/status');
 let port = 8080;
 
 //db options
@@ -51,11 +53,7 @@ router.get('/', function(req, res) {
 });
 
 router.route('/status')
-    // get status of API (accessed at GET http://localhost:8080/api/status)
-    .get(function(req, res) {
-        console.log('GET /status');
-        res.json({ status: 'Alive' });
-    })
+    .get(status.getStatus);
 
 // on routes that end in /messages
 // ----------------------------------------------------
@@ -118,5 +116,5 @@ port = process.env.PORT || port;            // set our port
 app.listen(port);
 console.log('🌈  Magic happens on port ' + port);
 
-// expose app
-exports = module.exports = app;
+// expose app for testing purposes
+module.exports = app;
