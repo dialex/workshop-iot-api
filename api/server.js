@@ -10,10 +10,11 @@ var jwt        = require('jsonwebtoken');   // used to create, sign, and verify 
 var mongoose   = require('mongoose');
 var morgan     = require('morgan');
 var app        = express();                 // define our app using express
-let port = process.env.PORT || 8080;
+let port       = process.env.PORT || 8080;
 
 //don't show the log when it is test
 if(config.util.getEnv('NODE_ENV') === 'dev') {
+    app.use(morgan('dev'));
     //app.use(morgan('combined')); //uncomment for verbose console logging
 }
 
@@ -34,6 +35,7 @@ let options =
 };
 
 // connect
+mongoose.Promise = global.Promise;
 mongoose.connect(config.DBHost, options);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
