@@ -18,9 +18,10 @@
 
 ## How to use
 
-- `npm install` installs dependencies
 - `mongod` starts the database
+- `npm install` installs dependencies
 - `npm start` starts the API
+- `npm test` runs the unit tests
 
 ## TODO
 
