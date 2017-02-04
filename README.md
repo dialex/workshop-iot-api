@@ -16,6 +16,12 @@
   - Frequency (throughput for clicks and API calls)
 0. Data
 
+## How to use
+
+- `npm install` installs dependencies
+- `mongod` starts the database
+- `node server.js` starts the API
+
 ## Reference material
 
 - Javascript
@@ -28,7 +34,27 @@
 
 ## TODO
 
+[ ] Unit testing
+[ ] endpoints that returns "usage" routes
+[ ] require auth token (user: testbash, pass: brighton)
+[ ] cleanup & organise into modules
+
+--------
+
+[ ] html page that lists messages
+[ ] auto refresh that page every 3 sec
+[ ] load/perf testing on that page (API)
+
+--------
+
+[ ] backup YumYumButton
+[ ] connect device to API
+[ ] test call
+[ ] snapshot/tag (save configs)
+[ ] diff buttons with diff calls
+
 Reference material
 
 - how to create an API using node.js https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 - TDD https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
+- https auth https://scotch.io/tutorials/setting-up-a-mean-stack-single-page-application
