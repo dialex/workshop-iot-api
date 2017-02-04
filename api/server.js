@@ -4,12 +4,13 @@
 
 // call the packages we need
 var bodyParser = require('body-parser');
-var config     = require('config');         //we load configs from JSON files
+var config     = require('config');         // we load configs from JSON files
 var express    = require('express');
+var jwt        = require('jsonwebtoken');   // used to create, sign, and verify tokens
 var mongoose   = require('mongoose');
 var morgan     = require('morgan');
 var app        = express();                 // define our app using express
-let port = 8080;
+let port = process.env.PORT || 8080;
 
 //don't show the log when it is test
 if(config.util.getEnv('NODE_ENV') === 'dev') {
@@ -18,9 +19,9 @@ if(config.util.getEnv('NODE_ENV') === 'dev') {
 
 //parse application/json and look for raw text
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: 'application/json'}));
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.set('superSecret', config.secret); // secret variable
 
 // ============================================================================
 // DATABASE SETUP
@@ -76,9 +77,8 @@ app.use('/api', router);
 // ============================================================================
 // START THE SERVER
 // ============================================================================
-port = process.env.PORT || port;
 app.listen(port);
-console.log('🌈  Magic happens on port ' + port);
+console.log('🌈  Magic happens at http://localhost:' + port);
 
 // expose app for testing purposes
 module.exports = app;
