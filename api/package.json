@@ -16,6 +16,6 @@
   },
   "scripts": {
     "start": "NODE_ENV=dev && node server/server.js",
-    "test": "mocha"
+    "test": "mocha tests/**/*.js"
   }
 }
