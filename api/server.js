@@ -2,18 +2,39 @@
 // =============================================================================
 
 // call the packages we need
-var express    = require('express');
 var bodyParser = require('body-parser');
+var config     = require('config');         //we load configs from JSON files
+var express    = require('express');
 var mongoose   = require('mongoose');
+var morgan     = require('morgan');
 var app        = express();                 // define our app using express
 
-// connect to our database
-mongoose.connect('mongodb://localhost/apiDatabase');
+let port = 8080;
+
+//db options
+let options =
+{
+    server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
+};
 var Message = require('./models/message');
 
-// configure app to use bodyParser(), this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
+// connect to db
+mongoose.connect(config.DBHost, options);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+//don't show the log when it is test
+if(config.util.getEnv('NODE_ENV') !== 'test') {
+    //use morgan to log at command line
+    //app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
+}
+
+//parse application/json and look for raw text
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/json'}));
 
 
 // ROUTES FOR OUR API
@@ -94,6 +115,9 @@ app.use('/api', router);                    // all routes are prefixed with this
 
 // START THE SERVER
 // =============================================================================
-var port = process.env.PORT || 8080;        // set our port
+port = process.env.PORT || port;            // set our port
 app.listen(port);
 console.log('🌈  Magic happens on port ' + port);
+
+// expose app
+exports = module.exports = app;
