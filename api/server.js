@@ -12,6 +12,7 @@ var app        = express();                 // define our app using express
 // declare routes
 let status = require('./controllers/routes/status');
 let message = require('./controllers/routes/message');
+let root = require('./controllers/routes/root');
 let port = 8080;
 
 //db options
@@ -20,7 +21,6 @@ let options =
     server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
     replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
 };
-var Message = require('./models/message');
 
 // connect to db
 mongoose.connect(config.DBHost, options);
@@ -48,10 +48,8 @@ router.use(function(req, res, next) {
     next(); // continue to the routes
 });
 
-router
-    .get('/', function(req, res) {
-        res.json({ result: 'Hello world! This is the API for the IoT Workshop.' });
-    });
+router.route('/')
+    .get(root.get)
 
 router.route('/status')
     .get(status.getStatus);
@@ -61,13 +59,11 @@ router.route('/message')
     .post(message.postMessage)
     .delete(message.deleteMessages);
 
-// on routes that end in /messages/...
-// ----------------------------------------------------
 router.route('/message/:author_name')
     .get(message.getMessagesByAuthor)
 
-// REGISTER OUR ROUTES -------------------------------
-app.use('/api', router);                    // all routes are prefixed with this
+// register routes, and prefix all them
+app.use('/api', router);
 
 
 // START THE SERVER
