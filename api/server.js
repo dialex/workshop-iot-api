@@ -25,9 +25,8 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 //don't show the log when it is test
-if(config.util.getEnv('NODE_ENV') !== 'test') {
-    //use morgan to log at command line
-    //app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
+if(config.util.getEnv('NODE_ENV') === 'dev') {
+    //app.use(morgan('combined')); //uncomment for verbose console logging
 }
 
 //parse application/json and look for raw text
