@@ -25,9 +25,9 @@
 ## TODO
 
 - [ ] Unit testing
-- [ ] endpoints that returns "usage" routes
+- [ ] endpoint that returns "usage" routes
 - [ ] require auth token (user: testbash, pass: brighton)
-- [ ] cleanup & organise into modules
+- [X] cleanup & organise into modules
 
 --------
 
