@@ -11,6 +11,7 @@ var app        = express();                 // define our app using express
 
 // declare routes
 let status = require('./controllers/routes/status');
+let message = require('./controllers/routes/message');
 let port = 8080;
 
 //db options
@@ -55,42 +56,10 @@ router.get('/', function(req, res) {
 router.route('/status')
     .get(status.getStatus);
 
-// on routes that end in /messages
-// ----------------------------------------------------
-router.route('/messages')
-    // get all messages (accessed at GET http://localhost:8080/api/messages)
-    .get(function(req, res) {
-        console.log('GET /messages');
-        Message.find(function(err, messages) {
-            if (err)
-              res.send(err);
-            console.log('\tReturned all saved messages');
-            res.json(messages);
-        });
-    })
-    // create a message (accessed at POST http://localhost:8080/api/messages)
-    .post(function(req, res) {
-        console.log('POST /messages');
-        var message = new Message();
-        message.text = req.body.text;
-        message.author = req.body.author;
-
-        message.save(function(err) {
-            if (err)
-              res.send(err);
-            res.json({ result: 'Message saved' });
-            console.log('\tMessage saved');
-        });
-    })
-    .delete(function(req, res) {
-        console.log('DELETE /messages');
-        Message.remove({}, function(err, bear) {
-            if (err)
-              res.send(err);
-            res.json({ message: 'Messages deleted' });
-            console.log('\tMessages deleted');
-        });
-    });
+router.route('/message')
+    .get(message.getMessages)
+    .post(message.postMessage)
+    .delete(message.deleteMessages);
 
 // on routes that end in /messages/...
 // ----------------------------------------------------
