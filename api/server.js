@@ -41,17 +41,17 @@ app.use(bodyParser.json({ type: 'application/json'}));
 
 // ROUTES FOR OUR API
 // =============================================================================
-var router = express.Router();              // get an instance of express Router
+var router = express.Router();
 
 // middleware (useful for logging and validations)
 router.use(function(req, res, next) {
     next(); // continue to the routes
 });
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-    res.json({ result: 'Hello world! This is the API for the IoT Workshop.' });
-});
+router
+    .get('/', function(req, res) {
+        res.json({ result: 'Hello world! This is the API for the IoT Workshop.' });
+    });
 
 router.route('/status')
     .get(status.getStatus);
@@ -63,17 +63,8 @@ router.route('/message')
 
 // on routes that end in /messages/...
 // ----------------------------------------------------
-router.route('/messages/:author_name')
-    // get the message with that id (accessed at GET http://localhost:8080/api/messages/:author_name)
-    .get(function(req, res) {
-      console.log('GET /messages/{author_name}');
-        Message.find({ author: req.params.author_name }, function(err, message) {
-            if (err)
-              res.send(err);
-            res.json(message);
-            console.log('\tReturned messages of: ' + req.params.author_name);
-        });
-    });
+router.route('/message/:author_name')
+    .get(message.getMessagesByAuthor)
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);                    // all routes are prefixed with this

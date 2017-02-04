@@ -5,7 +5,7 @@ let Message = require('../../models/message');
  * GET /message, returns all messages
  */
 function getMessages(req, res) {
-    console.log('GET /messages');
+    console.log('GET /message');
     Message.find(function(err, messages) {
         if (err)
           res.send(err);
@@ -15,10 +15,23 @@ function getMessages(req, res) {
 }
 
 /*
+ * GET message/:author_name, returns all messages filtered by author
+ */
+function getMessagesByAuthor(req, res) {
+    console.log('GET /message/{author_name}');
+    Message.find({ author: req.params.author_name }, function(err, message) {
+        if (err)
+          res.send(err);
+        res.json(message);
+        console.log('\tReturned messages of: ' + req.params.author_name);
+    });
+}
+
+/*
  * POST /message, saves a new message
  */
 function postMessage(req, res) {
-    console.log('POST /messages');
+    console.log('POST /message');
     var message = new Message();
     message.text = req.body.text;
     message.author = req.body.author;
@@ -35,7 +48,7 @@ function postMessage(req, res) {
  * DELETE /message, deletes all messages
  */
 function deleteMessages(req, res) {
-    console.log('DELETE /messages');
+    console.log('DELETE /message');
     Message.remove({}, function(err, bear) {
         if (err)
           res.send(err);
@@ -45,4 +58,4 @@ function deleteMessages(req, res) {
 }
 
 //export all the functions
-module.exports = { getMessages, postMessage, deleteMessages };
+module.exports = { getMessages, postMessage, deleteMessages, getMessagesByAuthor };
