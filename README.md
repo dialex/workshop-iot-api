@@ -22,16 +22,6 @@
 - `mongod` starts the database
 - `node server.js` starts the API
 
-## Reference material
-
-- Javascript
-  - johnny-five.io
-  - https://github.com/voodootikigod/voodoospark
-  - http://nodebots.codemash.org/
-  - https://community.particle.io/t/https-client-is-here-for-the-photon-by-the-glowfi-sh-team/15934
-- How to display realtime logging on screen?
-  - 10 seconds polling, calling the same API logging endpoint
-
 ## TODO
 
 - [ ] Unit testing
@@ -53,8 +43,15 @@
 - [ ] snapshot/tag (save configs)
 - [ ] diff buttons with diff calls
 
-Reference material
+## Reference material
 
+- Javascript
+  - johnny-five.io
+  - https://github.com/voodootikigod/voodoospark
+  - http://nodebots.codemash.org/
+  - https://community.particle.io/t/https-client-is-here-for-the-photon-by-the-glowfi-sh-team/15934
+- How to display realtime logging on screen?
+  - 10 seconds polling, calling the same API logging endpoint
 - how to create an API using node.js https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 - TDD https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
 - https auth https://scotch.io/tutorials/setting-up-a-mean-stack-single-page-application
