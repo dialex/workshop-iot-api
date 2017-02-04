@@ -48,9 +48,9 @@ router.use(function(req, res, next) {
 });
 
 // declare routes
-let status = require('./controllers/status');
-let message = require('./controllers/message');
-let root = require('./controllers/root');
+let status = require('../controllers/status');
+let message = require('../controllers/message');
+let root = require('../controllers/root');
 
 router.route('/')
     .get(root.get)
