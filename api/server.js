@@ -4,32 +4,43 @@
 
 // call the packages we need
 var bodyParser = require('body-parser');
-var config     = require('config');         // we load configs from JSON files
-var express    = require('express');
-var mongoose   = require('mongoose');
-var morgan     = require('morgan');
-var secrets    = require('./config/secrets');
-var app        = express();                 // define our app using express
-let port       = process.env.PORT || 8080;
+var config = require('config'); // we load configs from JSON files
+var express = require('express');
+var mongoose = require('mongoose');
+var morgan = require('morgan');
+var secrets = require('./config/secrets');
+var app = express(); // define our app using express
+let port = process.env.PORT || 8080;
 
 //don't show the log when it is test
-if(config.util.getEnv('NODE_ENV') !== 'test') {
+if (config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(morgan('dev'));
     //app.use(morgan('combined')); //uncomment for verbose console logging
 }
 
 //parse application/json and look for raw text
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 // ============================================================================
 // DATABASE SETUP
 // ============================================================================
 
-let options =
-{
-    server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
+let options = {
+    server: {
+        socketOptions: {
+            keepAlive: 1,
+            connectTimeoutMS: 30000
+        }
+    },
+    replset: {
+        socketOptions: {
+            keepAlive: 1,
+            connectTimeoutMS: 30000
+        }
+    }
 };
 
 // connect
@@ -67,7 +78,10 @@ router.use(function(req, res, next) {
         // verifies secret and checks exp
         jwt.verify(token, secrets.tokenSalt, function(err, decoded) {
             if (err) {
-                return res.json({ success: false, message: 'Invalid authentication token.' });
+                return res.json({
+                    success: false,
+                    message: 'Invalid authentication token.'
+                });
             } else {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;
@@ -75,7 +89,10 @@ router.use(function(req, res, next) {
             }
         });
     } else {
-        return res.status(403).json({ success: false, message: 'Missing authentication token.' });
+        return res.status(403).json({
+            success: false,
+            message: 'Missing authentication token.'
+        });
     }
 });
 
