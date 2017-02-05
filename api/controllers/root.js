@@ -31,7 +31,15 @@ function get(req, res) {
         desc: 'deletes all messages'
       }
     ],
-    authentication: 'work in progress'
+    authentication:
+    {
+      method: 'Authentication Token',
+      url: '/auth',
+      verb: 'POST',
+      user: 'testbash',
+      pass:'brighton17',
+      header: 'x-access-token'
+    }
   });
 }
 

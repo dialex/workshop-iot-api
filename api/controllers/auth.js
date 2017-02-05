@@ -1,5 +1,5 @@
 var secrets = require('../config/secrets');
-var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var jwt = require('jsonwebtoken'); // used to create and sign
 
 /*
  * POST /auth, validates credentials of user

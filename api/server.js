@@ -4,8 +4,9 @@
 
 // call the packages we need
 var bodyParser = require('body-parser');
-var config = require('config'); // we load configs from JSON files
+var config = require('config');
 var express = require('express');
+var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var secrets = require('./config/secrets');
