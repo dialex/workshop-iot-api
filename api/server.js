@@ -8,6 +8,7 @@ var config     = require('config');         // we load configs from JSON files
 var express    = require('express');
 var mongoose   = require('mongoose');
 var morgan     = require('morgan');
+var secrets    = require('./config/secrets');
 var app        = express();                 // define our app using express
 let port       = process.env.PORT || 8080;
 
@@ -42,11 +43,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 // ============================================================================
 let router = express.Router();
 
-// middleware (useful for logging and validations)
-router.use(function(req, res, next) {
-    next(); // continue to the routes
-});
-
 // declare routes
 let root = require('./controllers/root');
 let auth = require('./controllers/auth');
@@ -55,18 +51,38 @@ let message = require('./controllers/message');
 
 router.route('/')
     .get(root.get)
-
 router.route('/status')
     .get(status.getStatus);
-
 router.route('/auth')
     .post(auth.authenticate);
+
+// PROTECTED ROUTES below
+// ============================================================================
+
+// middleware (useful for logging and validations)
+router.use(function(req, res, next) {
+    // check header or url parameters or post parameters for token
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    if (token) {
+        // verifies secret and checks exp
+        jwt.verify(token, secrets.tokenSalt, function(err, decoded) {
+            if (err) {
+                return res.json({ success: false, message: 'Invalid authentication token.' });
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next(); //continue to routes
+            }
+        });
+    } else {
+        return res.status(403).json({ success: false, message: 'Missing authentication token.' });
+    }
+});
 
 router.route('/message')
     .get(message.getMessages)
     .post(message.postMessage)
     .delete(message.deleteMessages);
-
 router.route('/message/:author_name')
     .get(message.getMessagesByAuthor)
 
