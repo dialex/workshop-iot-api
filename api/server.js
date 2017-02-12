@@ -4,7 +4,6 @@
 
 // call the packages we need
 var bodyParser = require('body-parser');
-var cors = require('cors');
 var config = require('config');
 var express = require('express');
 var jwt = require('jsonwebtoken');
@@ -110,12 +109,12 @@ router.route('/message/:author_name')
 // register routes, and prefix all them
 app.use('/api', router);
 
-// http://stackoverflow.com/a/21622564/675577
-cors({
-    credentials: true,
-    origin: true
-})
-app.use(cors());
+// http://stackoverflow.com/a/35367521/675577
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 // ============================================================================
 // START THE SERVER

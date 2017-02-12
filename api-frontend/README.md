@@ -19,3 +19,4 @@ Constantly pools API and displays the messages received.
 
 - How to display realtime logging on screen?
   - 10 seconds polling, calling the same API logging endpoint
+- [Enable localhost dev/debug on Chrome, fixes the CORS issue](http://stackoverflow.com/a/38000615/675577)
