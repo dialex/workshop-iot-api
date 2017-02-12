@@ -7,7 +7,7 @@ Constantly pools API and displays the messages received.
 
 ## TODO
 
-- [ ] html page calls API and displays JSON
+- [X] html page calls API and displays JSON
 - [ ] auto refresh that page every 3 sec
 - [ ] test page with slow connection
 - [ ] test page with no connection
@@ -17,6 +17,7 @@ Constantly pools API and displays the messages received.
 
 ## Reference material
 
+- [Enable localhost dev/debug on Chrome, fixes the CORS issue](http://stackoverflow.com/a/38000615/675577)
+- [ajax API call](https://gist.github.com/zuch/3720842)
 - How to display realtime logging on screen?
   - 10 seconds polling, calling the same API logging endpoint
-- [Enable localhost dev/debug on Chrome, fixes the CORS issue](http://stackoverflow.com/a/38000615/675577)
