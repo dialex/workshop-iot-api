@@ -67,6 +67,8 @@ router.route('/status')
     .get(status.getStatus);
 router.route('/auth')
     .post(auth.authenticate);
+router.route('/admin/message')
+    .get(message.getMessages)
 
 // PROTECTED ROUTES below
 // ============================================================================
