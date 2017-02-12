@@ -7,9 +7,13 @@ Constantly pools API and displays the messages received.
 
 ## TODO
 
-- [ ] html page that lists messages
+- [ ] html page calls API and displays JSON
 - [ ] auto refresh that page every 3 sec
-- [ ] load/perf testing on that page (API)
+- [ ] test page with slow connection
+- [ ] test page with no connection
+- [ ] test several tabs open calling the same API (load)
+- [ ] parse response JSON into records
+- [ ] make it pretty with bootstrap
 
 ## Reference material
 
