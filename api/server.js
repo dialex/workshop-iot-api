@@ -4,6 +4,7 @@
 
 // call the packages we need
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var config = require('config');
 var express = require('express');
 var jwt = require('jsonwebtoken');
@@ -108,6 +109,13 @@ router.route('/message/:author_name')
 
 // register routes, and prefix all them
 app.use('/api', router);
+
+// http://stackoverflow.com/a/21622564/675577
+cors({
+    credentials: true,
+    origin: true
+})
+app.use(cors());
 
 // ============================================================================
 // START THE SERVER
