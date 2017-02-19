@@ -13,7 +13,7 @@ Constantly pools API and displays the messages received.
 - [X] html page calls API and displays JSON
 - [X] auto refresh that page every 5 sec
 - [X] test page with slow connection
-- [ ] test page with no connection
+- [X] test page with no connection
 - [X] test 22 tabs open calling the same API (load)
 - [X] parse response JSON into records
 - [ ] make it pretty with bootstrap
