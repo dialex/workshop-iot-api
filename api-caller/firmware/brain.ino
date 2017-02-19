@@ -93,6 +93,7 @@ void loop(){
     String message = "Hello Brighton!";
     bool isSuccess = ApiProxy::publishMessage(message);
     ledsDisplayResult(isSuccess);
+    preventSpamClicking();
   }
   // When you press the 3rd button (6 o'clock)
   else if(b.buttonOn(3)) {

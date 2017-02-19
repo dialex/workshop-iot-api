@@ -15,7 +15,7 @@ It will be responsible for calling our API.
 - [ ] connect device to API
 - [ ] make the first API call and check the log
 - [ ] snapshot/tag (save configs)
-- [ ] diff buttons with diff calls
+- [X] diff buttons with diff calls
 - [ ] redo everything is Javascript
 
 ## Reference material
