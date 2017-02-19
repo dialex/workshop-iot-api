@@ -22,7 +22,7 @@ NyanCatMelody ncat = NyanCatMelody(b);
 // LedHelper methods
 // =================
 
-int BLINK_TIMEOUT = 500; //milliseconds
+int BLINK_TIMEOUT = 1000; //milliseconds
 
 void ledsReset() {
   b.allLedsOff();
@@ -32,13 +32,13 @@ void ledsReset() {
 void ledsBlinkSuccess() {
   b.allLedsOn(0, 255, 0);
   delay(BLINK_TIMEOUT);
-  b.allLedsOff();
+  ledsReset();
 }
 
 void ledsBlinkFailure() {
   b.allLedsOn(255, 0, 0);
   delay(BLINK_TIMEOUT);
-  b.allLedsOff();
+  ledsReset();
 }
 
 void ledsDisplayWait(int ledToLight = 1) {
@@ -48,6 +48,14 @@ void ledsDisplayWait(int ledToLight = 1) {
     ledToLight = (ledToLight % 12) + 1;
     delay(100);
   }
+  delay(200); //introduces a little wait for suspense
+}
+
+void preventSpamClicking() {
+  b.setBrightness(30);
+  b.allLedsOn(46, 46, 46);
+  delay(5000); //prevents user from spamming button
+  ledsReset();
 }
 
 // ================
