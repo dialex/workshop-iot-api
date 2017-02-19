@@ -10,6 +10,7 @@ $(document).ready(function() {
 
     output += "</ul>";
     document.getElementById("results").innerHTML = output;
+    $('#progress').remove();
   });
 
 })
