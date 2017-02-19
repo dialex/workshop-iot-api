@@ -81,10 +81,9 @@ void loop(){
   // When you press the 2nd button (3 o'clock)
   else if(b.buttonOn(2)) {
     b.ledOn(3, 255, 255, 255);
-    ledsDisplayWait(3);
+    ledsDisplayWait(4);
     //DO SOMETHING
     String message = "Hello Brighton!";
-    SlackProxy::publishMessage(message);
     bool isSuccess = ApiProxy::publishMessage(message);
     if (isSuccess)
       ledsBlinkSuccess();
@@ -95,7 +94,7 @@ void loop(){
   // When you press the 3rd button (6 o'clock)
   else if(b.buttonOn(3)) {
     b.ledOn(6, 255, 255, 255);
-    ledsDisplayWait(6);
+    ledsDisplayWait(7);
     //DO SOMETHING
     String message = "It's a me! Particle!";
     bool isSuccess = ApiProxy::publishMessage(message);
@@ -107,7 +106,7 @@ void loop(){
   // When you press the 4th button (9 o'clock)
   else if(b.buttonOn(4)) {
     b.ledOn(9, 255, 255, 255);
-    ledsDisplayWait(9);
+    ledsDisplayWait(10);
     //DO SOMETHING
     String message = "";
     bool isSuccess = true;
