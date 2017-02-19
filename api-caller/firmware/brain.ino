@@ -41,6 +41,13 @@ void ledsBlinkFailure() {
   ledsReset();
 }
 
+void ledsDisplayResult(bool isSuccess) {
+  if (isSuccess)
+    ledsBlinkSuccess();
+  else
+    ledsBlinkFailure();
+}
+
 void ledsDisplayWait(int ledToLight = 1) {
   for (int i = 1; i <= 12; i++)
   {
@@ -85,11 +92,7 @@ void loop(){
     //DO SOMETHING
     String message = "Hello Brighton!";
     bool isSuccess = ApiProxy::publishMessage(message);
-    if (isSuccess)
-      ledsBlinkSuccess();
-    else
-      ledsBlinkFailure();
-    delay(5000); //prevents user from spamming button
+    ledsDisplayResult(isSuccess);
   }
   // When you press the 3rd button (6 o'clock)
   else if(b.buttonOn(3)) {
@@ -98,10 +101,7 @@ void loop(){
     //DO SOMETHING
     String message = "It's a me! Particle!";
     bool isSuccess = ApiProxy::publishMessage(message);
-    if (isSuccess)
-      ledsBlinkSuccess();
-    else
-      ledsBlinkFailure();
+    ledsDisplayResult(isSuccess);
   }
   // When you press the 4th button (9 o'clock)
   else if(b.buttonOn(4)) {
