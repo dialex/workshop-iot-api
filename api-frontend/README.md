@@ -5,7 +5,7 @@ Constantly pools API and displays the messages received.
 ## How to use (locally)
 
 - Given the API is running...
-- [Enable CORS on your Chrome](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) and make sure you use this filter `http://*/*`
+- [Enable CORS on your Chrome](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) and make sure you use this filter `http://localhost:8080/*`
 - Browser to [index.html](./index.html)
 
 ## TODO
