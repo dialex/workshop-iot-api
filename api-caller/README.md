@@ -11,7 +11,7 @@ It will be responsible for calling our API.
 ## TODO
 
 - [X] backup YumYumButton
-- [ ] cleanup YumYumButton specifics
+- [X] cleanup YumYumButton specifics
 - [ ] connect device to API
 - [ ] make the first API call and check the log
 - [ ] snapshot/tag (save configs)

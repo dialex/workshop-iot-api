@@ -1,7 +1,7 @@
 #include "slack_helper.h"
 
 String SlackHelper::getMessage() {
-  return "Hello Brighton! It's a me, a Particle!"
+  return "Hello Brighton! It's a me, a Particle!";
 }
 
 void SlackHelper::publishMessage(String message) {

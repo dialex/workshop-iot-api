@@ -74,10 +74,6 @@ void loop(){
     b.ledOn(3, 255, 255, 255);
     ledsDisplayWait(3);
     //DO SOMETHING
-    /*String message = SlackHelper::getMessage();
-    SlackHelper::publishMessage(message);
-    ledsBlinkSuccess();
-    delay(5000); //prevents user from spamming button*/
   }
   // When you press the 3rd button (6 o'clock)
   else if(b.buttonOn(3)) {
