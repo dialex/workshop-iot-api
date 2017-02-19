@@ -1,9 +1,10 @@
 #include "SlackProxy.h"
 
 String SlackProxy::getMessage() {
-  return "Hello Brighton! It's a me, a Particle!";
+  return "Hello Brighton! It's a me, Particle!";
 }
 
-void SlackProxy::publishMessage(String message) {
+bool SlackProxy::publishMessage(String message) {
   Particle.publish("internetbutton-test", message, 60, PRIVATE);
+  return true;
 }

@@ -6,7 +6,7 @@
 class SlackProxy {
   public:
     static String getMessage();
-    static void publishMessage(String message);
+    static bool publishMessage(String message);
 };
 
 #endif
