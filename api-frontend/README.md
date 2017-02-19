@@ -15,7 +15,7 @@ Constantly pools API and displays the messages received.
 - [X] test page with slow connection
 - [ ] test page with no connection
 - [X] test 22 tabs open calling the same API (load)
-- [ ] parse response JSON into records
+- [X] parse response JSON into records
 - [ ] make it pretty with bootstrap
 
 ## Reference material
