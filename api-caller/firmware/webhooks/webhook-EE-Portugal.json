@@ -1,0 +1,10 @@
+{
+	"event": "internetbutton-EEPT",
+	"url": "https://hooks.slack.com/services/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",
+	"requestType": "POST",
+	"json": {
+		"text": "{{SPARK_EVENT_VALUE}}",
+		"link_names": "1"
+	},
+	"deviceID": "2f0037001347343432313031"
+}

@@ -6,7 +6,7 @@
 
 ## TODO
 
-- [ ] backup YumYumButton
+- [X] backup YumYumButton
 - [ ] connect device to API
 - [ ] test call
 - [ ] snapshot/tag (save configs)

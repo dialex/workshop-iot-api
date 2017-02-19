@@ -1,0 +1,10 @@
+{
+	"event": "internetbutton-IDEIAhub",
+	"url": "https://hooks.slack.com/services/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",
+	"requestType": "POST",
+	"json": {
+		"text": "{{SPARK_EVENT_VALUE}}",
+		"link_names": "1"
+	},
+	"deviceID": "2f0037001347343432313031"
+}
