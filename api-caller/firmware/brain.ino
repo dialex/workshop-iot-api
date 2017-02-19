@@ -1,6 +1,7 @@
 #include "InternetButton.h"
 #include "nyan_cat.h"
-#include "slack_helper.h"
+#include "ApiProxy.h"
+#include "SlackProxy.h"
 
 // ============
 // Global stuff
@@ -74,18 +75,42 @@ void loop(){
     b.ledOn(3, 255, 255, 255);
     ledsDisplayWait(3);
     //DO SOMETHING
+    String message = "Hello Brighton!";
+    SlackProxy::publishMessage(message);
+    bool isSuccess = ApiProxy::publishMessage(message);
+    if (isSuccess)
+      ledsBlinkSuccess();
+    else
+      ledsBlinkFailure();
+    delay(5000); //prevents user from spamming button
   }
   // When you press the 3rd button (6 o'clock)
   else if(b.buttonOn(3)) {
     b.ledOn(6, 255, 255, 255);
     ledsDisplayWait(6);
     //DO SOMETHING
+    String message = "It's a me! Particle!";
+    bool isSuccess = ApiProxy::publishMessage(message);
+    if (isSuccess)
+      ledsBlinkSuccess();
+    else
+      ledsBlinkFailure();
   }
   // When you press the 4th button (9 o'clock)
   else if(b.buttonOn(4)) {
     b.ledOn(9, 255, 255, 255);
     ledsDisplayWait(9);
     //DO SOMETHING
+    String message = "Peach? Peach? Peach?";
+    bool isSuccess = true;
+    isSuccess = isSuccess && ApiProxy::publishMessage(message);
+    isSuccess = isSuccess && ApiProxy::publishMessage(message);
+    isSuccess = isSuccess && ApiProxy::publishMessage(message);
+    if (isSuccess)
+      ledsBlinkSuccess();
+    else
+      ledsBlinkFailure();
+    delay(5000); //prevents user from spamming button
   }
   ledsReset();
 
