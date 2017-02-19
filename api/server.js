@@ -67,6 +67,8 @@ router.route('/status')
     .get(status.getStatus);
 router.route('/auth')
     .post(auth.authenticate);
+router.route('/admin/message')
+    .get(message.getMessages)
 
 // PROTECTED ROUTES below
 // ============================================================================
@@ -106,6 +108,13 @@ router.route('/message/:author_name')
 
 // register routes, and prefix all them
 app.use('/api', router);
+
+// http://stackoverflow.com/a/35367521/675577
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 // ============================================================================
 // START THE SERVER
