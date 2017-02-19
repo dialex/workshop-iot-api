@@ -2,8 +2,11 @@
 
 Constantly pools API and displays the messages received.
 
-## How to use
+## How to use (locally)
 
+- Given the API is running...
+- [Enable CORS on your Chrome](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) and make sure you use this filter `http://*/*`
+- Browser to [index.html](./index.html)
 
 ## TODO
 
