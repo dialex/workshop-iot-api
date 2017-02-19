@@ -109,16 +109,15 @@ void loop(){
     b.ledOn(9, 255, 255, 255);
     ledsDisplayWait(9);
     //DO SOMETHING
-    String message = "Peach? Peach? Peach?";
+    String message = "";
     bool isSuccess = true;
-    isSuccess = isSuccess && ApiProxy::publishMessage(message);
-    isSuccess = isSuccess && ApiProxy::publishMessage(message);
-    isSuccess = isSuccess && ApiProxy::publishMessage(message);
-    if (isSuccess)
-      ledsBlinkSuccess();
-    else
-      ledsBlinkFailure();
-    delay(5000); //prevents user from spamming button
+    for (int i = 1; i <= 6; i++)
+    {
+      message += " Peach?";
+      isSuccess = isSuccess && ApiProxy::publishMessage(message);
+    }
+    ledsDisplayResult(isSuccess);
+    preventSpamClicking();
   }
   ledsReset();
 
