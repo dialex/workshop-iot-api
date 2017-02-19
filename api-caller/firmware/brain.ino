@@ -73,28 +73,23 @@ void loop(){
   else if(b.buttonOn(2)) {
     b.ledOn(3, 255, 255, 255);
     ledsDisplayWait(3);
-    String message = SlackHelper::getMessage();
+    //DO SOMETHING
+    /*String message = SlackHelper::getMessage();
     SlackHelper::publishMessage(message);
     ledsBlinkSuccess();
-    delay(5000); //prevents user from spamming button
+    delay(5000); //prevents user from spamming button*/
   }
   // When you press the 3rd button (6 o'clock)
   else if(b.buttonOn(3)) {
     b.ledOn(6, 255, 255, 255);
     ledsDisplayWait(6);
-    String message = SlackHelper::getMessage();
-    SlackHelper::publishMessage(message);
-    ledsBlinkSuccess();
-    delay(5000); //prevents user from spamming button
+    //DO SOMETHING
   }
   // When you press the 4th button (9 o'clock)
   else if(b.buttonOn(4)) {
     b.ledOn(9, 255, 255, 255);
     ledsDisplayWait(9);
-    String message = SlackHelper::getMessage();
-    SlackHelper::publishMessage(message);
-    ledsBlinkSuccess();
-    delay(5000); //prevents user from spamming button
+    //DO SOMETHING
   }
   ledsReset();
 

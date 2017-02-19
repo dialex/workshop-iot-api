@@ -1,7 +1,7 @@
 {
-    "name": "InternetButton-EE",
-    "version": "1.1.1",
+    "name": "TestBashIoT",
+    "version": "1.0.0",
     "author": "Diogo Nunes <dnunes@equalexperts.com>",
     "license": "LGPL",
-    "description": "Making the office smarter with an internet button."
+    "description": "Device for an IoT workshop on TestBash Brighton 2017."
 }

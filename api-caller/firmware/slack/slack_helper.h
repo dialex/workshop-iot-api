@@ -6,9 +6,7 @@
 class SlackHelper {
   public:
     static String getMessage();
-    static String getGreetingMessage();
     static void publishMessage(String message);
-    static void publishTestMessage(String message);
 };
 
 #endif
