@@ -11,7 +11,7 @@ Constantly pools API and displays the messages received.
 ## TODO
 
 - [X] html page calls API and displays JSON
-- [ ] auto refresh that page every 3 sec
+- [X] auto refresh that page every 5 sec
 - [ ] test page with slow connection
 - [ ] test page with no connection
 - [ ] test several tabs open calling the same API (load)
