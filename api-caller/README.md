@@ -25,7 +25,7 @@ It will be responsible for calling our API.
   - There's also this [lib](https://github.com/nmattisson/HttpClient) developed by a member of the community.
 - Javascript
   - johnny-five.io
-  - https://github.com/voodootikigod/voodoospark
+  - https://github.com/voodootikigod/voodoospark (Cloud2Device, does not apply)
   - http://nodebots.codemash.org/
   - https://community.particle.io/t/https-client-is-here-for-the-photon-by-the-glowfi-sh-team/15934
 
