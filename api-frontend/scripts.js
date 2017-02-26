@@ -1,5 +1,10 @@
 var base_URL = 'http://localhost:8080/api';
 
+//init tooltips
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 $(document).ready(function() {
 
   $.getJSON(base_URL + '/admin/message', function(data) {
