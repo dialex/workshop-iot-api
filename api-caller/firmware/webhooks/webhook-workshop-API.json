@@ -1,0 +1,10 @@
+{
+	"event": "internetbutton-test",
+	"url": "??????????",
+	"requestType": "POST",
+	"json": {
+		"text": "{{SPARK_EVENT_VALUE}}",
+  	"author": "EE's Internet Button"
+	},
+	"deviceID": "2f0037001347343432313031"
+}

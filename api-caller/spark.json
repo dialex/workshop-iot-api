@@ -1,0 +1,7 @@
+{
+    "name": "TestBashIoT",
+    "version": "1.0.0",
+    "author": "Diogo Nunes <dnunes@equalexperts.com>",
+    "license": "LGPL",
+    "description": "Device for an IoT workshop on TestBash Brighton 2017."
+}
