@@ -1,4 +1,5 @@
 #include "InternetButton.h"
+#include "HttpClient.h"
 
 #ifndef API_PROXY
 #define API_PROXY
