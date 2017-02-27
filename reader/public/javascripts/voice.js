@@ -88,7 +88,7 @@ if (!('webkitSpeechRecognition' in window)) {
         break;
       case /print [a-zA-Z0-9]*/.test(final_transcript):
         if(acceptInstruction){
-          $.get('/print?word=' + final_transcript.split('print ')[1], function(){
+          $.get('/mapper/print?word=' + final_transcript.split('print ')[1], function(){
             recognition.stop();
             informSuccess();
           })
@@ -98,7 +98,7 @@ if (!('webkitSpeechRecognition' in window)) {
         if(acceptInstruction){
           var explodedPhrase = final_transcript.substring(4, final_transcript.length).split(' to ');
 
-          $.get('/map?initialWord=' + explodedPhrase[0] + '&newWord=' + explodedPhrase[1], function(){
+          $.get('/mapper/map?initialWord=' + explodedPhrase[0] + '&newWord=' + explodedPhrase[1], function(){
             recognition.stop();
             informSuccess();
           })
@@ -109,7 +109,7 @@ if (!('webkitSpeechRecognition' in window)) {
           var explodedPhrase = final_transcript.substring(4, final_transcript.length).split(' to ');
 
           $.ajax({
-            url: '/map?initialWord=' + explodedPhrase[0],
+            url: '/mapper/map?initialWord=' + explodedPhrase[0],
             type: 'DELETE',
             success: function(result) {
               informSuccess();
@@ -120,7 +120,7 @@ if (!('webkitSpeechRecognition' in window)) {
       case /reset mappings/.test(final_transcript):
         if(acceptInstruction){
           $.ajax({
-            url: '/reset',
+            url: '/mapper/reset',
             type: 'DELETE',
             success: function(result) {
               informSuccess();
@@ -130,14 +130,14 @@ if (!('webkitSpeechRecognition' in window)) {
         break;
       case /show mappings/.test(final_transcript):
         if(acceptInstruction){
-          $.get('/list', function() {
+          $.get('/mapper/list', function() {
             informSuccess();
           })
         }
         break;
       case /clear screen/.test(final_transcript):
         if(acceptInstruction){
-          $.get('/clear', function(){
+          $.get('/mapper/clear', function(){
             recognition.stop();
             informSuccess();
           });

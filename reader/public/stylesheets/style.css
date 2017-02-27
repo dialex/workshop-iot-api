@@ -3,9 +3,9 @@
 	margin-right: auto;
 	margin-left: auto;
 	position: relative;
-  	top: 40%;
-  	transform: translateY(-50%);
-  	font-size: 125px;
+	top: 40%;
+	transform: translateY(75%);
+	font-size: 125px;
 }
 
 #overlay {
