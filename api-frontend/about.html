@@ -48,30 +48,43 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2>Overview</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>The system under test has 3 components.</p>
+                <p><img class="center" src="http://placehold.it/700x250"></p>
                 <div class="col-lg-4">
                     <h4>📝 Front-End</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>A webpage that lists all messages received by the API.</p>
                 </div>
                 <div class="col-lg-4">
                     <h4>☁️ API</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>An API that receives messages and stores them.</p>
                 </div>
                 <div class="col-lg-4">
                     <h4>🤖 Device</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>A hardware that sends messages to an API.</p>
                 </div>
             </div>
         </div>
     </div>
     <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h2>☁️ About the API</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>This is a <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST API</a>, coded in <a href="https://nodejs.org/en/">NodeJS</a> and it is available <a href="http://localhost:8080/api/">here</a>. It has 7 endpoints, <em>most of them</em> require an authentication token.</p>
+                <p>Messages received are persisted on a <a href="https://www.mongodb.com/">MongoDB</a> database.</p>
+                <p>This API allows you to CRUD messages. If you want to explore this API we suggest <a href="https://www.getpostman.com/">Postman</a>.</p>
                 <a class="btn btn-warning" role="button" data-toggle="collapse" href="#apiCheatsWarning" aria-expanded="false" aria-controls="apiCheatsWarning">Click for spoilers</a>
                 <div class="collapse" id="apiCheatsWarning">
+                    <br/>
+                    <p>
+                        <ul>
+                            <li>There's one endpoint that returns data bypassing authentication.</li>
+                            <li>You could wipe the database with a simple API call.</li>
+                        </ul>
+                    </p>
                     <br/>
                     <a class="btn btn-danger" role="button" data-toggle="collapse" href="#apiCheats" aria-expanded="false" aria-controls="apiCheats">Confirm your lack of honor</a>
                     <div class="collapse" id="apiCheats">
@@ -81,7 +94,12 @@
                                 <h3 class="panel-title">TOP SECRET&nbsp;&nbsp;<i>I don't know how you had access to this info, I'll deny everything</i></h3>
                             </div>
                             <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>
+                                    <ul>
+                                        <li>The Front-End calls a special endpoint to list messages ( <span class="label label-default">GET</span> <code>/api/admin/message</code>). This endpoint was intended for admin access only and does not require any authentication. Anyone can use it once they find it, which is a big security flaw.</li>
+                                        <li>There's one endpoint ( <span class="label label-default">DELETE</span> <code>/api/message</code>) that just deletes all messages. Again, the access to a destructive action like this should be more restricted.</li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                         <!--
@@ -100,11 +118,17 @@
         </div>
     </div>
     <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>🤖 About the Device</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h2>🤖 About the device</h2>
+                <p>This is an <a href="https://www.particle.io/products/hardware/internet-button">Internet Button</a>, built by <a href="https://www.particle.io/">Particle</a>. It is made of a <a href="https://store.particle.io/products/photon">Photon</a>, 4 buttons, 11 leds, a speaker and an accelerometer.
+                </p>
+                <p>We flashed the Photon with <a data-toggle="tooltip" data-placement="top" data-original-title="*holds nausea*">C++</a> code that calls the API with a custom message as parameter.</p>
+                <p>Success is <span class="label label-success">green</span>. Progress is <span class="label label-primary">blue</span>. Failure is <span class="label label-danger">red</span>. <span class="label label-default">White</span> ignores you.</p>
                 <blockquote>
                     <p>oooh, what does this button do?</p>
                     <footer>Dee Dee,
@@ -114,22 +138,22 @@
                 <div class="col-lg-3">
                     <h4>Button 1 ⬆️</h4>
                     <small><em>A tester...</em></small>
-                    <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="white-text">Click to play the Nyan Cat theme, rainbow included. Click again to stop.</p>
                 </div>
                 <div class="col-lg-3">
                     <h4>Button 2 ➡️</h4>
                     <small><em>should explore...</em></small>
-                    <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="white-text">Click to send a single short message to the API. Has protection against spam clicking.</p>
                 </div>
                 <div class="col-lg-3">
                     <h4>Button 3 ⬇️</h4>
                     <small><em>between...</em></small>
-                    <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="white-text">Click to send a single short message to the API. Allows spam clicking.</p>
                 </div>
                 <div class="col-lg-3">
                     <h4>Button 4 ⬅️</h4>
                     <small><em>the lines...</em></small>
-                    <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="white-text">Click to send 6 short messages, one after the other. Has protection against spam clicking.</p>
                 </div>
             </div>
         </div>
@@ -142,11 +166,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <h3>Mark W.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>I am a test manager, testing coach and international speaker, presenting workshops and talks on technical testing techniques. I’ve worked on award winning projects across a wide variety of technology sectors ranging from broadcast, digital, financial and public sector working with various Web, mobile and desktop technologies. I’m an expert in technical testing and test automation and a passionate advocate of risk-based automation and automation in testing practices which I regularly blog about at mwtestconsultancy.co.uk and the co-founder of the Software Testing Clinic. in London, a regular workshop for new and junior testers to receive free mentoring and lessons in software testing. I also have a keen interest in various technologies, developing new apps and Internet of thing devices regularly. You can get in touch with me on twitter: @2bittester</p>
+                        <p>To know more about me and my work visit www.mwtestconsultancy.co.uk</p>
                     </div>
                     <div class="col-lg-6">
                         <h3>Diogo N.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>I used to be a software developer but now, I’m a software tester in development (pun intended). I shifted my career a few months ago and I’m getting involved in the testing community. I have several hobbies and every year I start a new pet project. This year I decided to start my first IoT project, using the Internet Button from Particle. It was a huge success in my office and I want to share that experience with the community. I’m an active blogger about technology (and testing). I regularly publish code tutorials, tool reviews, and books’ summaries. Aside from my personal blog, I maintain a website that encourages high school graduates to pursue Computer Science while provides tips for freshmen. You can get in touch with me by email (email@diogonunes.com) or twitter (@dialexnunes).</p>
+                        <p>To know more about me and my work visit www.diogonunes.com</p>
                     </div>
                 </div>
             </div>
