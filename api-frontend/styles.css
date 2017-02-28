@@ -5,3 +5,8 @@ body {
 .white-text {
     color: white;
 }
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
