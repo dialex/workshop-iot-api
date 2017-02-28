@@ -13,6 +13,17 @@ function getMessages(req, res) {
 }
 
 /*
+ * GET /message, returns all messages
+ */
+function getLatestMessages(req, res) {
+    Message.find(function(err, messages) {
+        if (err)
+          res.send(err);
+        res.json(messages);
+    }).sort('-timestamp');
+}
+
+/*
  * GET message/:author_name, returns all messages filtered by author
  */
 function getMessagesByAuthor(req, res) {
@@ -50,4 +61,4 @@ function deleteMessages(req, res) {
 }
 
 //export all the functions
-module.exports = { getMessages, postMessage, deleteMessages, getMessagesByAuthor };
+module.exports = { getMessages, getLatestMessages, postMessage, deleteMessages, getMessagesByAuthor };
