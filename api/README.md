@@ -12,6 +12,7 @@
 - [X] endpoint that returns "usage" routes
 - [X] require auth token (user: testbash, pass: brighton)
 - [X] cleanup & organise into modules
+- [X] `/ui` endpoint to serve static pages (api-frontend)
 
 ## Reference material
 

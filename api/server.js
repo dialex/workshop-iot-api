@@ -106,8 +106,10 @@ router.route('/message')
 router.route('/message/:author_name')
     .get(message.getMessagesByAuthor)
 
-// register routes, and prefix all them
+// register routes and prefix all them
 app.use('/api', router);
+// routes for the static pages (front-end)
+app.use('/ui', express.static('../api-frontend'))
 
 // http://stackoverflow.com/a/35367521/675577
 app.use(function(req, res, next) {
