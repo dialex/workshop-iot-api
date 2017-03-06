@@ -12,11 +12,11 @@ It will be responsible for calling our API.
 
 - [X] backup YumYumButton
 - [X] cleanup YumYumButton specifics
-- [ ] connect device to API
-- [ ] make the first API call and check the log
+- [X] connect device to API
+- [X] make the first API call and check the log
 - [ ] snapshot/tag (save configs)
 - [X] diff buttons with diff calls
-- [ ] redo everything is Javascript
+- [ ] ~~redo everything is Javascript~~
 
 ## Reference material
 
