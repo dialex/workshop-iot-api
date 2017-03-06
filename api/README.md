@@ -13,7 +13,7 @@
 - [X] require auth token (user: testbash, pass: brighton)
 - [X] cleanup & organise into modules
 - [X] `/ui` endpoint to serve static pages (api-frontend)
-- [ ] basic auth on API calls (support both)
+- [X] basic auth on API calls (support both)
 
 
 ## Reference material

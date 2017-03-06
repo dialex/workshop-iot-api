@@ -31,15 +31,22 @@ function get(req, res) {
         desc: 'deletes all messages'
       }
     ],
-    authentication:
-    {
-      method: 'Authentication Token',
-      url: '/auth',
-      verb: 'POST',
-      user: 'testbash',
-      pass:'brighton17',
-      header: 'x-access-token'
-    }
+    authentication: [
+      {
+        method: 'Authentication Token',
+        url: '/auth',
+        verb: 'POST',
+        user: 'testbash',
+        pass:'brighton17',
+        header: 'x-access-token'
+      },
+      {
+        method: 'Basic Auth',
+        user: 'testbash',
+        pass:'brighton17',
+        header: 'Authorization'
+      }
+    ]
   });
 }
 
