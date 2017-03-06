@@ -1,7 +1,7 @@
 #include "SlackProxy.h"
 
 String SlackProxy::getMessage() {
-  return "Hello Brighton! It's a me, Particle!";
+  return "btn2: Hello World!";
 }
 
 bool SlackProxy::publishMessage(String message) {

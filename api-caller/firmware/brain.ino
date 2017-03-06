@@ -90,7 +90,7 @@ void loop(){
     b.ledOn(3, 255, 255, 255);
     ledsDisplayWait(4);
     //DO SOMETHING
-    String message = "Hello Brighton!";
+    String message = ApiProxy::getMessage2();
     bool isSuccess = ApiProxy::publishMessage(message);
     ledsDisplayResult(isSuccess);
     preventSpamClicking();
@@ -100,7 +100,7 @@ void loop(){
     b.ledOn(6, 255, 255, 255);
     ledsDisplayWait(7);
     //DO SOMETHING
-    String message = "It's a me! Particle!";
+    String message = ApiProxy::getMessage3();
     bool isSuccess = ApiProxy::publishMessage(message);
     ledsDisplayResult(isSuccess);
   }
@@ -109,12 +109,11 @@ void loop(){
     b.ledOn(9, 255, 255, 255);
     ledsDisplayWait(10);
     //DO SOMETHING
-    String message = "";
+    String message = ApiProxy::getMessage4();
     bool isSuccess = true;
     for (int i = 1; i <= 6; i++)
     {
-      message += " Peach?";
-      isSuccess = isSuccess && ApiProxy::publishMessage(message);
+      isSuccess = isSuccess && ApiProxy::publishMessage(message + " (" + i + " of 6)");
     }
     ledsDisplayResult(isSuccess);
     preventSpamClicking();

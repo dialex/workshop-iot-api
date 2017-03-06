@@ -5,6 +5,9 @@
 
 class ApiProxy {
   public:
+    static String getMessage2();
+    static String getMessage3();
+    static String getMessage4();
     static bool publishMessage(String message);
 };
 

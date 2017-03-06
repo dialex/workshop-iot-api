@@ -1,5 +1,24 @@
 #include "ApiProxy.h"
 
+String ApiProxy::getMessage2() {
+  return "btn2: Hello wanna-be-experts!";
+  //return "btn2: meow meow!";
+  //return "btn2: hoo-hoo-aah-aah!";
+}
+
+String ApiProxy::getMessage3() {
+  return "btn3: equally spammy";
+  //return "btn3: spammy cat";
+  //return "btn3: spammy monkey";
+}
+
+String ApiProxy::getMessage4() {
+  return "btn4: equally fast";
+  //return "btn4: fast cat";
+  //return "btn4: fast monkey";
+}
+
 bool ApiProxy::publishMessage(String message) {
-  return false;
+  Particle.publish("sendMessageToAWS", message, 60, PRIVATE);
+  return true;
 }
