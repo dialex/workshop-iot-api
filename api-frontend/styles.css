@@ -2,6 +2,10 @@ body {
   padding-top: 70px;
 }
 
+.justified {
+  text-align: justify;
+}
+
 .white-text {
     color: white;
 }
