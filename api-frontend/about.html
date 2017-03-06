@@ -80,9 +80,10 @@
                     <br/>
                     <p>
                         <ul>
+                            <li>There's one endpoint that tells you everything about the API.</li>
                             <li>There's one endpoint that returns data bypassing authentication.</li>
                             <li>You could wipe the database with a simple API call.</li>
-                            <li>The code that powers all this is on GitHub.</li>
+                            <li>The code that powers all this is hosted publicly on GitHub.</li>
                         </ul>
                     </p>
                     <br/>
@@ -96,6 +97,7 @@
                             <div class="panel-body">
                                 <p>
                                     <ul>
+                                        <li>If you call the root api endpoint ( <span class="label label-default">GET</span> <code>/api</code>) you will get a response with a JSON that describes all endpoints and all authentication methods (including passwords).</li>
                                         <li>The Front-End calls a special endpoint to list messages ( <span class="label label-default">GET</span> <code>/api/admin/message</code>). This endpoint was intended for admin access only and does not require any authentication. Anyone can use it once they find it, which is a big security flaw.</li>
                                         <li>There's one endpoint ( <span class="label label-default">DELETE</span> <code>/api/message</code>) that just deletes all messages. Again, the access to a destructive action like this should be more restricted.</li>
                                         <li>The code is open-source at <a href="https://github.com/dialex/workshop-iot-api">GitHub</a>.</li>
@@ -126,8 +128,8 @@
                                 </ul>
                                 <h5>Time</h5>
                                 <ul>
-                                    <li>Concurrency (multiple devices)</li>
-                                    <li>Frequency (throughput for clicks and API calls)</li>
+                                    <li>Concurrency (single call, multiple devices)</li>
+                                    <li>Frequency (single device, multiple calls)</li>
                                 </ul>
                                 <h5>Data</h5>
                                 <ul>
@@ -165,7 +167,7 @@
                 <div class="col-lg-3">
                     <h4>Button 2 ➡️</h4>
                     <small><em>should explore...</em></small>
-                    <p class="white-text">Click to send a single message to the API. Has protection against spam clicking.</p>
+                    <p class="white-text">Click to send a single message to the API. Protection against spam clicking.</p>
                 </div>
                 <div class="col-lg-3">
                     <h4>Button 3 ⬇️</h4>
@@ -175,11 +177,12 @@
                 <div class="col-lg-3">
                     <h4>Button 4 ⬅️</h4>
                     <small><em>the lines...</em></small>
-                    <p class="white-text">Click to send 6 messages, one after the other. Has protection against spam clicking.</p>
+                    <p class="white-text">Click to send 6 messages, one after the other. Protection against spam clicking.</p>
                 </div>
             </div>
         </div>
     </div>
+    <br/>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
