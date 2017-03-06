@@ -17,6 +17,7 @@ It will be responsible for calling our API.
 - [ ] snapshot/tag (save configs)
 - [X] diff buttons with diff calls
 - [ ] ~~redo everything is Javascript~~
+- [ ] create a webhook to AWS and call it
 
 ## Reference material
 
