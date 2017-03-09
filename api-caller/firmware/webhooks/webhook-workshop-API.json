@@ -1,10 +1,10 @@
 {
-	"event": "internetbutton-test",
-	"url": "??????????",
+	"event": "sendMessageToAWS",
+	"url": "http://34.251.213.215:8080/api/message",
 	"requestType": "POST",
 	"json": {
 		"text": "{{SPARK_EVENT_VALUE}}",
-  	"author": "EE's Internet Button"
+		"author": "InternetButton-EE"
 	},
 	"deviceID": "2f0037001347343432313031"
 }

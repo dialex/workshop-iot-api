@@ -14,7 +14,7 @@
 - [X] cleanup & organise into modules
 - [X] `/ui` endpoint to serve static pages (api-frontend)
 - [X] basic auth on API calls (support both)
-- [ ] deploy to AWS
+- [X] deploy to AWS
 
 ## Reference material
 
