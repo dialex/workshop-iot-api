@@ -14,10 +14,11 @@ It will be responsible for calling our API.
 - [X] cleanup YumYumButton specifics
 - [X] connect device to API
 - [X] make the first API call and check the log
-- [ ] snapshot/tag (save configs)
 - [X] diff buttons with diff calls
 - [ ] ~~redo everything is Javascript~~
-- [ ] create a webhook to AWS and call it
+- [X] create a webhook to AWS and call it
+- [ ] have a button failing based on pattern (explain it on spoilers section)
+- [ ] snapshot/tag (save configs)
 
 ## Reference material
 
