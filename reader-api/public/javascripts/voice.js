@@ -126,11 +126,6 @@ if (!('webkitSpeechRecognition' in window)) {
           }
         }
         break;
-      case /delete LED number [a-zA-Z0-9]* = LED number [a-zA-Z0-9]*/.test(final_transcript):
-        if(acceptInstruction){
-          console.log(final_transcript);
-        }
-      break;
       case /reset mappings/.test(final_transcript):
         if(acceptInstruction){
           $.ajax({
@@ -143,11 +138,8 @@ if (!('webkitSpeechRecognition' in window)) {
         }
         break;
       case /set LED number [a-zA-Z0-9 ]*/.test(final_transcript):
-      console.log("tigger")
         if(acceptInstruction){
-          var explodedPhrase = final_transcript.toLowerCase().replace('set led number ', '').split(' ');;
-
-          console.log(colours[explodedPhrase[1]])
+          var explodedPhrase = final_transcript.toLowerCase().replace('set led number ', '').split(' ');
 
           $.get('/mapper/colour?led=' + WtoN.convert(explodedPhrase[0]) + '&red=' + colours[explodedPhrase[1]].r + '&green=' + colours[explodedPhrase[1]].g + '&blue=' + colours[explodedPhrase[1]].b, function(){
             recognition.stop();
