@@ -1,5 +1,5 @@
 {
-	"event": "sendMessageToAWS",
+	"event": "Dev1Send-sendMessageToAWS",
 	"url": "http://34.251.213.215:8080/api/message",
 	"requestType": "POST",
 	"json": {

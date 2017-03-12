@@ -19,6 +19,11 @@ String ApiProxy::getMessage4() {
 }
 
 bool ApiProxy::publishMessage(String message) {
-  Particle.publish("sendMessageToAWS", message, 60, PRIVATE);
+  Particle.publish("Dev1Send-sendMessageToAWS", message, 60, PRIVATE);
   return true;
+}
+
+bool ApiProxy::publishMessageFail(String message) {
+  Particle.publish("Dev1Fail-sendMessageWhichFailsToAWS", message, 60, PRIVATE);
+  return false;
 }

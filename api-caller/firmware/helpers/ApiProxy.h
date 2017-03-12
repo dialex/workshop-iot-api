@@ -9,6 +9,7 @@ class ApiProxy {
     static String getMessage3();
     static String getMessage4();
     static bool publishMessage(String message);
+    static bool publishMessageFail(String message);
 };
 
 #endif

@@ -1,0 +1,10 @@
+{
+	"event": "Dev1Fail-sendMessageWhichFailsToAWS",
+	"url": "http://34.251.213.215:8080/api/message",
+	"requestType": "POST",
+	"json": {
+		"text": "{{SPARK_EVENT_VALUE}}",
+		"author": "InternetButton-EE"
+	},
+	"deviceID": "2f0037001347343432313031"
+}
