@@ -1,16 +1,26 @@
-// var recognition = new webkitSpeechRecognition();
-// recognition.continuous = true;
-// recognition.interimResults = true;
-// recognition.onresult = function(event) {
-//   console.log(event.results[0][0].transcript);
-// }
-//
-
 var acceptInstruction = false;
+
+var colours = {
+  'red' : {
+    'r' : 255,
+    'g' : 0,
+    'b' : 0
+  },
+  'green' : {
+    'r' : 0,
+    'g' : 255,
+    'b' : 0
+  },
+  'blue' : {
+    'r' : 0,
+    'g' : 0,
+    'b' : 255
+  }
+}
 
 var sleep = function(){
   $('#mood').empty();
-  $("#mood").append('<p>🙂</p>');
+  $('#mood').append('<p>🙂</p>');
 }
 
 var notify = function(){
@@ -79,48 +89,47 @@ if (!('webkitSpeechRecognition' in window)) {
     }
 
     switch (true) {
-      case /ok box/.test(final_transcript):
+      case /hello reader/.test(final_transcript):
         recognition.stop();
         notify();
 
         acceptInstruction = true;
 
         break;
-      case /print [a-zA-Z0-9]*/.test(final_transcript):
+      case /toggle LED number .*/.test(final_transcript):
         if(acceptInstruction){
-          $.get('/print?word=' + final_transcript.split('print ')[1], function(){
+          $.get('/mapper/toggle?led=' + WtoN.convert(final_transcript.split('number ')[1]), function(){
             recognition.stop();
             informSuccess();
           })
         }
         break;
-      case /map [a-zA-Z0-9]* to [a-zA-Z0-9]*/.test(final_transcript):
+      case /LED number [a-zA-Z0-9]* = LED number [a-zA-Z0-9]*/.test(final_transcript):
         if(acceptInstruction){
-          var explodedPhrase = final_transcript.substring(4, final_transcript.length).split(' to ');
+          if(final_transcript.indexOf('delete') > -1){
+            var explodedPhrase = final_transcript.replace('delete ', '').replace(/LED number /g,'').split(' = ');
 
-          $.get('/map?initialWord=' + explodedPhrase[0] + '&newWord=' + explodedPhrase[1], function(){
-            recognition.stop();
-            informSuccess();
-          })
-        }
-        break;
-      case /delete [a-zA-Z0-9]* to [a-zA-Z0-9]*/.test(final_transcript):
-        if(acceptInstruction){
-          var explodedPhrase = final_transcript.substring(4, final_transcript.length).split(' to ');
+            $.ajax({
+              url: '/mapper/map?led=' + WtoN.convert(explodedPhrase[0]) + '&mappedLed=' + WtoN.convert(explodedPhrase[1]),
+              type: 'DELETE',
+              success: function(result) {
+                informSuccess();
+              }
+            });
+          } else {
+            var explodedPhrase = final_transcript.replace(/LED number /g,'').split(' = ');
 
-          $.ajax({
-            url: '/map?initialWord=' + explodedPhrase[0],
-            type: 'DELETE',
-            success: function(result) {
+            $.get('/mapper/map?led=' + WtoN.convert(explodedPhrase[0]) + '&mappedLed=' + WtoN.convert(explodedPhrase[1]), function(){
+              recognition.stop();
               informSuccess();
-            }
-          });
+            })
+          }
         }
-      break;
+        break;
       case /reset mappings/.test(final_transcript):
         if(acceptInstruction){
           $.ajax({
-            url: '/reset',
+            url: '/mapper/reset',
             type: 'DELETE',
             success: function(result) {
               informSuccess();
@@ -128,16 +137,11 @@ if (!('webkitSpeechRecognition' in window)) {
           });
         }
         break;
-      case /show mappings/.test(final_transcript):
+      case /set LED number [a-zA-Z0-9 ]*/.test(final_transcript):
         if(acceptInstruction){
-          $.get('/list', function() {
-            informSuccess();
-          })
-        }
-        break;
-      case /clear screen/.test(final_transcript):
-        if(acceptInstruction){
-          $.get('/clear', function(){
+          var explodedPhrase = final_transcript.toLowerCase().replace('set led number ', '').split(' ');
+
+          $.get('/mapper/colour?led=' + WtoN.convert(explodedPhrase[0]) + '&red=' + colours[explodedPhrase[1]].r + '&green=' + colours[explodedPhrase[1]].g + '&blue=' + colours[explodedPhrase[1]].b, function(){
             recognition.stop();
             informSuccess();
           });
