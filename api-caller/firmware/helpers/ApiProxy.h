@@ -5,7 +5,7 @@
 
 class ApiProxy {
   private:
-    static bool toggle;
+    static int totalCalls;
 
   public:
     static String getMessage2();

@@ -1,5 +1,7 @@
 #include "ApiProxy.h"
 
+int ApiProxy::totalCalls = 0;
+
 String ApiProxy::getMessage2() {
   return "btn2: Hello wanna-be-experts!";
   //return "btn2: meow meow!";
@@ -24,11 +26,11 @@ bool ApiProxy::publishMessage(String message) {
 }
 
 bool ApiProxy::publishMessageFail(String message) {
-  unsigned long currentTime = millis();
-  unsigned int currentMinute = (int) ((currentTime % 3600) / 60);
-  bool shouldSucceed = ((currentTime % 2) == 0);
+  totalCalls++;
+  bool shouldSucceed = ((totalCalls % 3) == 0);
 
   if(shouldSucceed) {
+    totalCalls = 0;
     return ApiProxy::publishMessage(message);
   } else {
     Particle.publish("Dev1Fail-sendMessageWhichFailsToAWS", message, 60, PRIVATE);
