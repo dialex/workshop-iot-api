@@ -9,9 +9,9 @@ String ApiProxy::getMessage2() {
 }
 
 String ApiProxy::getMessage3() {
-  return "btn3: equally spammy";
-  //return "btn3: spammy cat";
-  //return "btn3: spammy monkey";
+  return "btn3: equally flaky";
+  //return "btn3: flaky cat";
+  //return "btn3: flaky monkey";
 }
 
 String ApiProxy::getMessage4() {
