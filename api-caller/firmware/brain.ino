@@ -102,7 +102,7 @@ void loop(){
     //DO SOMETHING
     String message = ApiProxy::getMessage3();
     bool isSuccess = ApiProxy::publishMessageFail(message);
-    SlackProxy::publishMessage(message + " (success? " + isSuccess + ")");//EE device only
+    //SlackProxy::publishMessage(message + " (success? " + isSuccess + ")");//EE device only
     ledsDisplayResult(isSuccess);
   }
   // When you press the 4th button (9 o'clock)
