@@ -1,23 +1,29 @@
-- we can use particle cloud logs to see the request
+we can use particle cloud logs to see the request
 
 [X] deploy API on AWS
 [X] API >> Particle Cloud >> API (on AWS)
 
-AMI images
-linux 64bit
-micro
-1 instance
-8 gb
+---------
 
-iot-workshop
-security group for iot workshop
+- AMI images
+- linux 64bit
+- micro
+- 1 instance
+- 8 gb
 
-custom tcp rule, TCP, 8080, default
+---------
 
-LAUNCH
-create key pair
-save pem file
-ssh -i "dialex-aws.pem" ec2-user@ec2-35-161-207-249.us-west-2.compute.amazonaws.com
+- iot-workshop
+- security group for iot workshop
+- custom tcp rule, TCP, 8080, default
+
+---------
+
+**LAUNCH**
+
+- create key pair
+- save pem file
+- `ssh -i "dialex-aws.pem" ec2-user@ec2-35-161-207-249.us-west-2.compute.amazonaws.com`
 
       ## [Install mongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/)
       cd /etc/yum.repos.d
@@ -39,12 +45,14 @@ ssh -i "dialex-aws.pem" ec2-user@ec2-35-161-207-249.us-west-2.compute.amazonaws.
       ## Install Node
       http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html
 
-wget downloadzip-from-git
-unzip master.zip
-cd api
-npm install
+- wget downloadzip-from-git
+- unzip master.zip
+- cd api
+- npm install
 
-start and top resets IPs
-elastic IP
-create one, it costs
-right click on ip, associate AMI
+---------
+
+- start and top resets IPs
+- elastic IP
+- create one, it costs
+- right click on ip, associate AMI
