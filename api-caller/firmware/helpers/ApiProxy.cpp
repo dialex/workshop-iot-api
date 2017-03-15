@@ -24,6 +24,14 @@ bool ApiProxy::publishMessage(String message) {
 }
 
 bool ApiProxy::publishMessageFail(String message) {
-  Particle.publish("Dev1Fail-sendMessageWhichFailsToAWS", message, 60, PRIVATE);
-  return false;
+  unsigned long currentTime = millis();
+  unsigned int currentMinute = (int) ((currentTime % 3600) / 60);
+  bool shouldSucceed = ((currentTime % 2) == 0);
+
+  if(shouldSucceed) {
+    return ApiProxy::publishMessage(message);
+  } else {
+    Particle.publish("Dev1Fail-sendMessageWhichFailsToAWS", message, 60, PRIVATE);
+    return false;
+  }
 }

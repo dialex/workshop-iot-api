@@ -92,7 +92,7 @@ void loop(){
     //DO SOMETHING
     String message = ApiProxy::getMessage2();
     bool isSuccess = ApiProxy::publishMessage(message);
-    SlackProxy::publishMessage(message);//EE device only
+    //SlackProxy::publishMessage(message);//EE device only
     ledsDisplayResult(isSuccess);
   }
   // When you press the 3rd button (6 o'clock)
@@ -101,11 +101,7 @@ void loop(){
     ledsDisplayWait(7);
     //DO SOMETHING
     String message = ApiProxy::getMessage3();
-    bool isSuccess;
-    if(false)
-      isSuccess = ApiProxy::publishMessage(message);
-    else
-      isSuccess = ApiProxy::publishMessageFail(message);
+    bool isSuccess = ApiProxy::publishMessageFail(message);
     SlackProxy::publishMessage(message + " (success? " + isSuccess + ")");//EE device only
     ledsDisplayResult(isSuccess);
   }
@@ -119,7 +115,7 @@ void loop(){
     for (int i = 1; i <= 6; i++)
     {
       isSuccess = isSuccess && ApiProxy::publishMessage(message + " (" + i + " of 6)");
-      SlackProxy::publishMessage(message);//EE device only
+      //SlackProxy::publishMessage(message);//EE device only
     }
     ledsDisplayResult(isSuccess);
     preventSpamClicking();

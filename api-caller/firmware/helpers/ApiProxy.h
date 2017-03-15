@@ -4,6 +4,9 @@
 #define API_PROXY
 
 class ApiProxy {
+  private:
+    static bool toggle;
+
   public:
     static String getMessage2();
     static String getMessage3();
