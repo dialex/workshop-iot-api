@@ -5,6 +5,7 @@ Requires NodeJS v5.0.0 or later
 
 1. Clone/Download folder
 2. Run ```npm install```
+2. Add in Particle API Token and Particle DeviceID into package.json
 3. Run ```npm start```
 4. Open browser and navigate to ```localhost:3000```
 
