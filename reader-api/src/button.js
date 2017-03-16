@@ -1,7 +1,10 @@
 var request = require("request");
-var deviceId = '36002a001147333433363331';
-var token = 'f9a1ea0ca821f32ad55796bced74abe5c483b2b0';
+var deviceId = process.env.DEVICEID;
+var token = process.env.TOKEN;
 var baseUrl = 'https://api.particle.io/v1/devices/' + deviceId;
+
+console.log("Using Token: " + token);
+console.log("Using DeviceID: " + deviceId);
 
 var options = {
   method: 'POST',

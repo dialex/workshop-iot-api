@@ -4,7 +4,7 @@
   "private": true,
   "author": "Mark Winteringham",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "TOKEN=UPDATEME DEVICEID=UPDATEME node ./bin/www",
     "test": "mocha test"
   },
   "dependencies": {
