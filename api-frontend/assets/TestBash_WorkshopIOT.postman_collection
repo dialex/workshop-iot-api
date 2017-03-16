@@ -1,0 +1,196 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestBash_WorkshopIOT",
+		"_postman_id": "508fc837-6eeb-7834-be98-5718adeb6320",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"request": {
+				"url": "http://localhost:8080/api/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"A simple test message.\",\n  \"caller\": \"Diogo's Postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Auth",
+			"request": {
+				"url": "http://localhost:8080/api/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"testbash\",\n  \"password\": \"brighton17\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "API status",
+			"request": {
+				"url": "http://localhost:8080/api/status",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"A simple test message.\",\n  \"author\": \"Diogo's Postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Messages - Read all",
+			"request": {
+				"url": "http://localhost:8080/api/message",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0ODYyOTI1NTYsImRhdGEiOiJ0ZXN0YmFzaCIsImlhdCI6MTQ4NjI4ODk1Nn0.paA3Pl8XokNiJKW9x3GxgyxwpeLDsebHXfmkSgV4658",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"A simple test message.\",\n  \"caller\": \"Diogo's Postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Messages - Read all (admin)",
+			"request": {
+				"url": "http://34.251.213.215:8080/api/admin/message",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0ODYyOTI1NTYsImRhdGEiOiJ0ZXN0YmFzaCIsImlhdCI6MTQ4NjI4ODk1Nn0.paA3Pl8XokNiJKW9x3GxgyxwpeLDsebHXfmkSgV4658",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"A simple test message.\",\n  \"caller\": \"Diogo's Postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Messages - Read by author",
+			"request": {
+				"url": "http://localhost:8080/api/message/Postman",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0ODYyOTI1NTYsImRhdGEiOiJ0ZXN0YmFzaCIsImlhdCI6MTQ4NjI4ODk1Nn0.paA3Pl8XokNiJKW9x3GxgyxwpeLDsebHXfmkSgV4658",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"A simple test message.\",\n  \"caller\": \"Diogo's Postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Messages - Create",
+			"request": {
+				"url": "http://localhost:8080/api/message",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0ODYyOTI1NTYsImRhdGEiOiJ0ZXN0YmFzaCIsImlhdCI6MTQ4NjI4ODk1Nn0.paA3Pl8XokNiJKW9x3GxgyxwpeLDsebHXfmkSgV4658",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"A simple test message\",\n  \"author\": \"Postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Messages - Delete all",
+			"request": {
+				"url": "http://localhost:8080/api/message",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0ODYyOTI1NTYsImRhdGEiOiJ0ZXN0YmFzaCIsImlhdCI6MTQ4NjI4ODk1Nn0.paA3Pl8XokNiJKW9x3GxgyxwpeLDsebHXfmkSgV4658",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
