@@ -6,7 +6,7 @@ Requires NodeJS v5.0.0 or later
 1. Clone/Download folder
 2. Run ```npm install```
 3. Run ```npm start```
-4. Open browser and navigate to ```localhost:300```
+4. Open browser and navigate to ```localhost:3000```
 
 ## Using the Reader
 
