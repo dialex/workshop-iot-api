@@ -38,7 +38,7 @@ Now you need to update the device.
 - [ ] ~~redo everything is Javascript~~
 - [X] create a webhook to AWS and call it
 - [X] have a button failing based on pattern (explain it on spoilers section)
-- [ ] snapshot/tag (save configs)
+- [X] snapshot/tag (save configs)
 
 ## Reference material
 
