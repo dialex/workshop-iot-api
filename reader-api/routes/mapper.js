@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var LedMapper = require('../src/LedMapper'),
+var LedMapper = require('../src/ledmapper'),
     lm = new LedMapper();
 var button = require('../src/button');
 
