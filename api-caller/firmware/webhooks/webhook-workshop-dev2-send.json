@@ -1,0 +1,10 @@
+{
+	"event": "Dev2Send-sendMessageToAWS",
+	"url": "http://34.250.242.121:8080/api/message",
+	"requestType": "POST",
+	"json": {
+		"text": "{{SPARK_EVENT_VALUE}}",
+		"author": "mw-button2"
+	},
+	"deviceID": "3c001f000f47323137323832"
+}
