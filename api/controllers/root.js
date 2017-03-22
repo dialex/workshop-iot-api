@@ -42,8 +42,8 @@ function get(req, res) {
       },
       {
         method: 'Basic Auth',
-        user: 'testbash',
-        pass:'brighton17',
+        username: 'testbash',
+        password:'brighton17',
         header: 'Authorization'
       }
     ]
