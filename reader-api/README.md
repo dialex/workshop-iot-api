@@ -22,3 +22,5 @@ You can then give a series of other commands:
 3. ```Delete LED number one equals LED number two``` - This will delete the mapping you have previously created.
 4. ```Reset mappings``` - This will reset all mappings in API and turn off all LEDs.
 5. ```Set LED number two green``` - This will update the colour of the LED to green.  You can set it to red, green or blue.
+
+POSTMAN Collection: https://www.getpostman.com/collections/8581d207c05c06b3d5ad
